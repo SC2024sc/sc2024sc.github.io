@@ -131,7 +131,7 @@ footer .wrap{padding-block:26px 28px;display:grid;gap:16px;justify-items:center;
 .lr{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.02em;color:inherit;opacity:.5;text-decoration:none;margin-top:-2px}
 .lr svg{width:12px;height:12px}
 .lr:hover{opacity:.85}
-.star{display:inline-block;vertical-align:3px;margin-left:8px;padding:3px 8px 2px;border-radius:999px;background:#fff;color:var(--terra);font:800 10.5px/1.2 var(--f-poster-body);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-4deg);transition:transform .2s;box-shadow:0 2px 0 rgba(43,26,16,.15);white-space:nowrap}
+.star{display:inline-block;vertical-align:3px;margin-left:8px;padding:3px 8px 2px;border-radius:999px;background:#ffd23f;color:#1a1a1a;font:800 10.5px/1.2 var(--f-poster-body);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-4deg);transition:transform .2s;box-shadow:0 2px 0 rgba(43,26,16,.15);white-space:nowrap}
 .it:hover .star{transform:rotate(3deg) scale(1.08)}
 .spin{border:0;border-radius:999px;background:var(--ochre);color:var(--brown);font:700 14px/1 var(--f-poster-body);padding:10px 16px;cursor:pointer;box-shadow:0 3px 0 rgba(43,26,16,.18)}
 .spin .die{display:inline-block}
@@ -144,13 +144,17 @@ footer .wrap{padding-block:26px 28px;display:grid;gap:16px;justify-items:center;
 .foot-logo{width:96px;height:96px;margin-bottom:-14px}
 .mascot{position:fixed;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15;display:flex;align-items:flex-end;gap:4px}
 .mascot a{display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-decoration:none;color:var(--brown)}
-.mascot .bubble{background:#fff;color:var(--brown);font:700 13.5px/1.25 var(--f-poster-body);padding:9px 12px;border-radius:16px 16px 4px 16px;box-shadow:0 4px 14px rgba(43,26,16,.18);max-width:180px;margin:0 46px -2px 0;position:relative;z-index:1}
+.mascot .bubble{background:#fff;color:var(--brown);font:700 13.5px/1.25 var(--f-poster-body);padding:9px 12px;border-radius:16px 16px 4px 16px;box-shadow:0 4px 14px rgba(43,26,16,.18);max-width:180px;margin:0 22px -4px 0;position:relative;z-index:1}
 .mascot .bubble b{color:#e0a100;letter-spacing:1px}
-.mascot svg.cup{width:112px;height:86px;overflow:visible;filter:drop-shadow(0 3px 4px rgba(43,26,16,.25))}
+.mascot svg.cup{width:104px;height:98px;overflow:visible;filter:drop-shadow(0 3px 4px rgba(43,26,16,.25))}
 .mascot .x{position:absolute;top:-8px;right:-4px;width:24px;height:24px;border-radius:50%;border:0;background:var(--brown);color:var(--cream);font:700 14px/1 var(--f-poster-body);cursor:pointer}
 .mascot.gone{display:none}
 @media (prefers-reduced-motion:no-preference){
-  .mascot svg.cup{animation:ride 3s ease-in-out infinite;transform-origin:50% 90%}
+  .mascot .run-g{transform-box:view-box;transform-origin:96px 140px;animation:bob .5s ease-in-out infinite alternate}
+  .mascot .leg1{transform-box:view-box;transform-origin:84px 112px;animation:legs .5s ease-in-out infinite alternate}
+  .mascot .leg2{transform-box:view-box;transform-origin:108px 112px;animation:legs .5s ease-in-out infinite alternate-reverse}
+  @keyframes bob{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-4px) rotate(2deg)}}
+  @keyframes legs{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
   .mascot .board-g{transform-box:view-box;transform-origin:92px 112px;animation:sway 3s ease-in-out infinite}
   .mascot .arm{transform-box:view-box;transform-origin:128px 52px;animation:wave 1s ease-in-out infinite}
   .mascot .spark{animation:spark 1s ease-in-out infinite}
@@ -188,8 +192,6 @@ footer .wrap{padding-block:26px 28px;display:grid;gap:16px;justify-items:center;
       <button type="button" id="l-es" data-l="es">ES</button>
       <button type="button" id="l-de" data-l="de">DE</button>
     </div>
-    <button type="button" class="spin" id="spin"><span class="die" aria-hidden="true">🎲</span> <span id="spin-t"></span></button>
-    <p class="pick" id="pick" aria-live="polite"></p>
   </div>
 </header>
 <div class="mini" id="mini">
@@ -216,42 +218,29 @@ footer .wrap{padding-block:26px 28px;display:grid;gap:16px;justify-items:center;
 <div class="mascot" id="mascot">
   <a id="review-link" href="https://g.page/r/CXNVG8XcI4KoEBM/review" target="_blank" rel="noopener">
     <span class="bubble"><span id="review-text"></span> <b>★★★★★</b></span>
-<svg class="cup" viewBox="0 0 170 130" aria-hidden="true">
-  <defs>
-    <clipPath id="sy-board"><ellipse cx="0" cy="0" rx="64" ry="12"/></clipPath>
-    <linearGradient id="sy-coffee" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a030"/><stop offset=".55" stop-color="#d9741a"/><stop offset="1" stop-color="#6e3412"/></linearGradient>
-  </defs>
-  <g class="board-g">
-    <g transform="translate(92 112) rotate(-8)">
-      <g clip-path="url(#sy-board)">
-        <rect x="-70" y="-14" width="140" height="28" fill="#26b5b0"/>
-        <path d="M-44 -14h22l-14 28h-22z" fill="#ff6b6b"/>
-        <path d="M-22 -14h22l-14 28h-22z" fill="#f28a1c"/>
-        <path d="M0 -14h22l-14 28h-22z" fill="#fbbf24"/>
-        <path d="M22 -14h20l-14 28h-20z" fill="#26b5b0"/>
-      </g>
-      <ellipse cx="0" cy="0" rx="64" ry="12" fill="none" stroke="#173238" stroke-width="4"/>
-    </g>
+<svg class="cup" viewBox="0 -4 170 160" aria-hidden="true">
+  <defs><clipPath id="sy-b2"><ellipse cx="0" cy="0" rx="17" ry="52"/></clipPath></defs>
+  <g class="run-g">
+  <g class="leg1"><path d="M84 112Q78 128 66 136q-8 1-10 6" fill="none" stroke="#173238" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 112Q78 128 66 136q-8 1-10 6" fill="none" stroke="#fbf1e6" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g class="leg2"><path d="M108 112Q114 130 124 136l12-14" fill="none" stroke="#173238" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M108 112Q114 130 124 136l12-14" fill="none" stroke="#fbf1e6" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="rotate(-6 96 70)">
+    <path d="M126 48c26-4 30 30 2 40" fill="none" stroke="#173238" stroke-width="15" stroke-linecap="round"/>
+    <path d="M126 48c26-4 30 30 2 40" fill="none" stroke="#fbf1e6" stroke-width="6.5" stroke-linecap="round"/>
+    <path d="M54 26L72 112Q96 121 120 112L138 26Z" fill="#fbf1e6" stroke="#173238" stroke-width="4.5" stroke-linejoin="round"/>
+    <ellipse cx="96" cy="26" rx="42" ry="10" fill="#fbf1e6" stroke="#173238" stroke-width="4.5"/>
+    <ellipse cx="97" cy="27" rx="33" ry="6" fill="#7a4520"/>
+    <ellipse cx="84" cy="56" rx="4.2" ry="6.2" fill="#173238"/>
+    <path d="M100 56q6-7 13 0M101 51l10-4" fill="none" stroke="#173238" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M86 68q13 4 25-2q-3 17-12 17q-10 0-13-15z" fill="#ff7b6b" stroke="#173238" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M97 88l9 14h-18z" fill="#e02a24"/>
   </g>
-  <g class="body-g">
-    <path d="M78 88q-3 9-12 13h12M104 86q3 9 2 14h11" fill="none" stroke="#173238" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-    <g transform="rotate(-7 92 55)">
-      <path d="M56 38C30 34 30 72 62 66" fill="none" stroke="#173238" stroke-width="13" stroke-linecap="round"/>
-      <path d="M56 38C30 34 30 72 62 66" fill="none" stroke="#fbf1e6" stroke-width="5.5" stroke-linecap="round"/>
-      <path d="M52 30Q52 18 92 17Q132 17 132 30L124 66Q117 90 92 91Q67 90 60 68Z" fill="#fbf1e6" stroke="#173238" stroke-width="4" stroke-linejoin="round"/>
-      <ellipse cx="92" cy="29" rx="37" ry="9" fill="url(#sy-coffee)" stroke="#173238" stroke-width="3.5"/>
-      <path d="M70 26q14-6 30-5" fill="none" stroke="#ffd08a" stroke-width="3.5" stroke-linecap="round" opacity=".9"/>
-      <path d="M75 54q5-7 10 0M100 53q5-7 10 0" fill="none" stroke="#173238" stroke-width="3.6" stroke-linecap="round"/>
-      <ellipse cx="70" cy="62" rx="5.5" ry="3.6" fill="#ff8a8a" opacity=".85"/>
-      <ellipse cx="116" cy="61" rx="5.5" ry="3.6" fill="#ff8a8a" opacity=".85"/>
-      <path d="M86 60q7 1 13 0q-1 11-6.5 11T86 60z" fill="#173238" stroke="#173238" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M88.5 66.5q4-3.5 8 0q-1.5 3-4 3t-4-3z" fill="#ff7b8a"/>
-    </g>
-    <g class="arm">
-      <path d="M128 52Q138 46 144 34" fill="none" stroke="#173238" stroke-width="5.5" stroke-linecap="round"/>
-      <circle cx="145" cy="31" r="5" fill="#173238"/>
-    </g>
-    <g class="spark" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"><path d="M150 18l6-10M156 24l9-6M158 32h9"/></g>
+  <g class="board2" transform="translate(48 92) rotate(-24)">
+    <g clip-path="url(#sy-b2)"><rect x="-20" y="-55" width="40" height="110" fill="#f9c74f"/><path d="M-9 -55L9 55" stroke="#14919b" stroke-width="5"/></g>
+    <ellipse cx="0" cy="0" rx="17" ry="52" fill="none" stroke="#173238" stroke-width="4"/>
+  </g>
+  <path d="M74 96Q64 100 54 98" fill="none" stroke="#173238" stroke-width="13" stroke-linecap="round"/>
+  <path d="M74 96Q64 100 54 98" fill="none" stroke="#fbf1e6" stroke-width="5.5" stroke-linecap="round"/>
+  <circle cx="51" cy="98" r="7.5" fill="#fbf1e6" stroke="#173238" stroke-width="3.5"/>
   </g>
 </svg>
   </a>
@@ -502,7 +491,6 @@ document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-press
   document.getElementById("title").textContent=tr(UI.title[menu]);
   document.getElementById("maps-label").textContent=tr(UI.maps);
   document.getElementById("review-text").textContent=tr(UI.review);
-  document.getElementById("spin-t").textContent=tr(UI.spin);document.getElementById("pick").innerHTML="";
   
   const secs=MENUS[menu].filter(s=>REVIEW||s.items.some(i=>i.s!=="old"));
   const chipHTML=secs.map(s=>`<a href="#${s.id}" data-id="${s.id}">${esc(tr(s.t))}</a>`).join("");document.querySelectorAll(".chips").forEach(c=>c.innerHTML=chipHTML);
@@ -558,10 +546,7 @@ function fit(){mn.classList.toggle("on",scrollY>tp.offsetHeight-10);const over=i
 addEventListener("scroll",fit,{passive:true});addEventListener("resize",fit);fit();})();
 </script>
 <script>
-(function(){const b=document.getElementById("spin"),p=document.getElementById("pick");
-b.addEventListener("click",()=>{const pool=[];document.querySelectorAll("#menu .sec").forEach(sec=>sec.querySelectorAll(".it:not(.old) .it-name").forEach(h=>pool.push({n:h.firstChild.textContent,id:sec.id})));
- if(!pool.length)return;b.classList.remove("go");void b.offsetWidth;b.classList.add("go");let t=0;const iv=setInterval(()=>{const r=pool[Math.random()*pool.length|0];p.innerHTML=`<b>${r.n}</b>`;if(++t>9){clearInterval(iv);
- p.innerHTML=`${tr(UI.pick)} <b>${r.n}</b><a href="#${r.id}">${tr(UI.see)} →</a>`;p.querySelector("a").addEventListener("click",e=>{e.preventDefault();const sec=document.getElementById(r.id);window.scrollTo({top:sec.getBoundingClientRect().top+scrollY-document.getElementById("mini").offsetHeight-16,behavior:"smooth"})})}},80)});
+(function(){
  let last=scrollY,dir=0,flips=[],calmT;const rt=document.getElementById("review-text");
  addEventListener("scroll",()=>{const d=Math.sign(scrollY-last);last=scrollY;if(d&&d!==dir){dir=d;const now=Date.now();flips=flips.filter(x=>now-x<1500);flips.push(now);
   if(flips.length>=4){flips=[];rt.textContent=tr(UI.calm);clearTimeout(calmT);calmT=setTimeout(()=>rt.textContent=tr(UI.review),2500)}}},{passive:true});})();
