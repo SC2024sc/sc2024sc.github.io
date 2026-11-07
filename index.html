@@ -173,7 +173,7 @@ body[data-look="poster"] .board .where{position:absolute;left:0;right:0;top:102p
 .foot-logo{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;position:relative;z-index:2}
 .wave{position:absolute;left:0;bottom:0;width:200%;height:70px;z-index:0;pointer-events:none;animation:surfwave 2.4s cubic-bezier(.4,0,.3,1) forwards}
 @keyframes surfwave{0%{transform:translateX(-100%) translateY(20px)}15%{transform:translateX(-80%) translateY(0)}85%{transform:translateX(30%) translateY(0)}100%{transform:translateX(50%) translateY(30px);opacity:0}}
-.star{cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.star,.glit{cursor:pointer;-webkit-tap-highlight-color:transparent!important;-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none}.star::selection{background:transparent}.foot-logo::selection{background:transparent}
 .glit{position:absolute;pointer-events:none;z-index:5;font-size:var(--s);line-height:1;color:var(--c);animation:glit .9s ease-out forwards;text-shadow:0 0 4px rgba(255,255,255,.6)}
 @keyframes glit{0%{transform:translate(-50%,-50%) scale(0) rotate(0)}30%{transform:translate(-50%,-50%) scale(1.2) rotate(40deg);opacity:1}100%{transform:translate(-50%,calc(-50% - 18px)) scale(.4) rotate(120deg);opacity:0}}
 
@@ -576,6 +576,7 @@ addEventListener("scroll",fit,{passive:true});addEventListener("resize",fit);fit
  if(fl)fl.addEventListener("click",()=>{const n=Date.now();if(n-lt<400&&!busy){busy=1;lt=0;
   const w=document.createElement("div");w.className="wave";w.innerHTML='<svg viewBox="0 0 1200 70" preserveAspectRatio="none" width="100%" height="100%"><path d="M0 40C100 10 200 10 300 40S500 70 600 40 800 10 900 40 1100 70 1200 40V70H0Z" fill="#29a3bf" opacity=".55"/><path d="M0 50C100 25 200 25 300 50S500 75 600 50 800 25 900 50 1100 75 1200 50V70H0Z" fill="#59adae" opacity=".7"/></svg>';
   ft.appendChild(w);w.addEventListener("animationend",()=>{w.remove();busy=0})}else lt=n});
+ document.addEventListener("mousedown",e=>{if(e.target.closest(".star,.foot-logo,#board"))e.preventDefault()});
  document.addEventListener("click",e=>{const st=e.target.closest(".star");if(!st)return;const h=st.closest("h3"),li=h.closest("li")||h;li.style.position||(li.style.position="relative");
   const r=h.getBoundingClientRect(),lr=li.getBoundingClientRect(),C=["#ffd23f","#fff","#ffe98a","#f1cd7e"];
   for(let i=0;i<16;i++){const g=document.createElement("span");g.className="glit";g.textContent=Math.random()<.6?"✦":"★";
