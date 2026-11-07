@@ -542,7 +542,7 @@ function spy(){
   document.querySelectorAll(".sec").forEach(s=>obs.observe(s));
 }
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;store.set("sy-lang",lang);render()}));
-document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{menu=b.dataset.m;render();window.scrollTo({top:document.querySelector(".top").offsetHeight-1})}));
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{menu=b.dataset.m;render()}));
 render();
 </script>
 
