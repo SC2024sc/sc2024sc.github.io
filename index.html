@@ -446,6 +446,7 @@ const UI = {
   old:T("antigo","old","antiguo","alt"),
   review:T("Chávena pequena, favor grande: avalia-nos","Small cup, big favour: review us","Taza pequeña, favor grande: reséñanos","Kleine Tasse, große Bitte: bewerte uns"),
   star:T("Favorito","Favourite","Favorito","Liebling"),
+  starL:T("Favorito da casa","House favourite","Favorito de la casa","Liebling des Hauses"),
   spin:T("O que peço hoje?","What should I order?","¿Qué pido hoy?","Was bestelle ich heute?"),
   pick:T("Hoje calha-te:","Today you get:","Hoy te toca:","Heute gibt's:"),
   see:T("Ver","See it","Ver","Ansehen"),
@@ -509,7 +510,7 @@ document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-press
   layout();spy();
 }
 const DESK=matchMedia("(min-width:900px)");
-function nwStar(n,fl){const i=n.lastIndexOf(" ");return esc(n.slice(0,i+1))+`<span style="white-space:nowrap">${esc(n.slice(i+1))}${fl}<span class="star">★ ${esc(tr(UI.star))}</span></span>`}
+function nwStar(n,fl){const i=n.lastIndexOf(" ");return esc(n.slice(0,i+1))+`<span style="white-space:nowrap">${esc(n.slice(i+1))}${fl}<span class="star">★ ${esc(tr(DESK.matches?UI.starL:UI.star))}</span></span>`}
 function layout(){
   const M=document.getElementById("menu"),secs=[...M.querySelectorAll(".sec")];
   if(!DESK.matches){M.replaceChildren(...secs);return}
