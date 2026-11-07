@@ -156,10 +156,10 @@ header .langs{width:max-content;margin-left:auto;transform:scale(.76);transform-
 body[data-look="poster"] .board .title{position:absolute;left:0;right:0;top:71px;transform:translateY(-50%);margin:0;text-align:center;color:#fff;font:62px/1 "Titan One";letter-spacing:0;white-space:nowrap;font-variation-settings:normal}
 body[data-look="poster"] .board .where{position:absolute;left:0;right:0;top:102px;margin:0;text-align:center;color:#fff;font:700 10px/1 var(--f-poster-body);letter-spacing:.16em;text-indent:.16em;text-transform:uppercase}
 .board.wig{animation:wig .7s ease-in-out}
-#umb{position:absolute;left:0;top:0;width:70px;height:70px;margin:-70px 0 0 0;transform-origin:0 100%;transform:none;z-index:3;pointer-events:none;display:none}
+#umb{position:absolute;left:0;top:0;width:70px;height:70px;margin:-70px 0 0 0;transform-origin:0 100%;transform:none;z-index:1;pointer-events:none;display:none}
 #umb.in{display:block;animation:umbIn .7s cubic-bezier(.2,.8,.3,1.2) both}
 #umb.out{display:block;animation:umbOut .5s cubic-bezier(.5,0,.9,.4) both}
-#umb.still{display:block}header{overflow-x:clip}
+#umb.still{display:block}#board .title{z-index:2}header{overflow-x:clip}
 @keyframes umbIn{from{transform:translate(100vw,-60px) rotate(400deg)}75%{transform:translate(0,0) rotate(-8deg) scale(1)}88%{transform:rotate(5deg)}to{transform:none}}
 @keyframes umbOut{from{transform:none}20%{transform:translate(-4px,4px) rotate(-10deg)}to{transform:translate(100vw,-60px) rotate(400deg)}}
 .board .frost{opacity:0;transition:opacity .6s}.board.frozen .frost{opacity:1}
@@ -492,7 +492,7 @@ const eur=p=>lang==="en"?"€"+p.replace(/,/g,"."):p+" €";
 const flag=s=>s==="check"?`<span class="flag">?</span>`:s==="old"?`<span class="flag">${esc(tr(UI.old))}</span>`:"";
 
 function placeUmb(){const k=document.querySelector("#title .uk"),u=document.getElementById("umb"),bd=document.getElementById("board");if(!k||!u)return;const sc=bd.getBoundingClientRect().width/bd.offsetWidth||1,br=bd.getBoundingClientRect(),r=k.getBoundingClientRect(),cs=parseFloat(getComputedStyle(document.getElementById("title")).fontSize);
- const x=(r.left+r.width*.5-br.left)/sc,y=(r.top-br.top)/sc+cs*(k.textContent==="k"?.44:.66);u.style.left=x+"px";u.style.top=y+"px";const W=cs*1.15;u.style.width=W+"px";u.style.height=W+"px";u.style.margin=(-W)+"px 0 0 "+(-W*.04)+"px"}
+ const x=(r.left+r.width*.5-br.left)/sc,y=(r.top-br.top)/sc+cs*(k.textContent==="k"?.58:.72);u.style.left=x+"px";u.style.top=y+"px";const W=cs*.95;u.style.width=W+"px";u.style.height=W+"px";u.style.margin=(-W)+"px 0 0 "+(-W*.04)+"px"}
 function fitTitle(){const t=document.getElementById("title");let fs=62;t.style.fontSize=fs+"px";const r=document.createRange();r.selectNodeContents(t);const max=t.offsetWidth*0.7;while(r.getBoundingClientRect().width>max&&fs>28){fs-=2;t.style.fontSize=fs+"px"}placeUmb()}
 document.fonts&&document.fonts.ready.then(()=>fitTitle());
 let lastTap=0;document.getElementById("board").addEventListener("click",e=>{if(e.target.closest("a"))return;const bd=e.currentTarget,now=Date.now(),dbl=now-lastTap<400;lastTap=dbl?0:now;bd.classList.remove("wig","twirl");void bd.offsetWidth;bd.classList.add(dbl?"twirl":"wig")});
