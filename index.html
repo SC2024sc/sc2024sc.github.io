@@ -531,7 +531,7 @@ function render(){document.getElementById("board").classList.toggle("frozen",men
 document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===lang));
     document.querySelectorAll(".tabs button").forEach(b=>{b.textContent=tr(UI.tab[b.dataset.m]);b.setAttribute("aria-pressed",b.dataset.m===menu)});
   {const tt=tr(UI.title[menu]),h=document.getElementById("title"),u=document.getElementById("umb"),was=u.dataset.m;
-  if(menu==="drinks"){let i=tt.indexOf("k");if(i<0)i=tt.length-1;const j=tt.indexOf("i");h.innerHTML=[...tt].map((c,n)=>n===i?'<span class="uk">'+esc(c)+'</span>':n===j?'<span class="ui">'+esc(c)+'</span>':esc(c)).join("")}else h.textContent=tt;
+  if(menu==="drinks"){let i=tt.indexOf("k");if(i<0)i=tt.lastIndexOf("a");if(i<0)i=tt.length-1;const j=tt.indexOf("i");h.innerHTML=[...tt].map((c,n)=>n===i?'<span class="uk">'+esc(c)+'</span>':n===j?'<span class="ui">'+esc(c)+'</span>':esc(c)).join("")}else h.textContent=tt;
   document.querySelectorAll(".bk").forEach(e=>e.classList.toggle("on",menu==="drinks"));
   fitTitle();u.dataset.m=menu;
   if(menu==="drinks"){if(was!=="drinks"){u.className="";void u.offsetWidth;u.className="in"}}
