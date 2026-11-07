@@ -533,7 +533,7 @@ document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-press
   fitTitle();u.dataset.m=menu;
   if(menu==="drinks"){if(was!=="drinks"){u.className="";void u.offsetWidth;u.className="in"}}
   else if(was==="drinks"){u.className="";void u.offsetWidth;u.className="out"}}
-  document.getElementById("maps-label").textContent=tr(UI.maps);document.getElementById("credit-t").textContent=tr(T("Web desenhada por","Website designed by","Web diseñada por","Website von"));
+  document.getElementById("maps-label").textContent=tr(UI.maps);document.getElementById("credit-t").textContent="© "+new Date().getFullYear()+" Sea You Surf Café · "+tr(T("Web desenhada por","Website designed by","Web diseñada por","Website von"));
   document.getElementById("review-text").textContent=tr(UI.review);
   
   const secs=MENUS[menu].filter(s=>REVIEW||s.items.some(i=>i.s!=="old"));
