@@ -188,6 +188,7 @@ body[data-look="poster"] .board .where{position:absolute;left:0;right:0;top:102p
 .mascot .cup{display:block;width:104px;height:99px;overflow:visible;filter:drop-shadow(0 3px 4px rgba(43,26,16,.25))}
 .mascot .x{position:absolute;top:-8px;right:-4px;width:24px;height:24px;border-radius:50%;border:0;background:var(--brown);color:var(--cream);font:700 14px/1 var(--f-poster-body);cursor:pointer}
 .mascot.gone{display:none}
+.credit{margin:6px 0 0;font:500 11px/1.3 var(--f-poster-body);color:rgba(255,248,236,.42);letter-spacing:.02em}.credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .foot-logo{cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;position:relative;z-index:2}
 .wave{position:absolute;left:0;bottom:-2px;height:96%;z-index:0;pointer-events:none;animation:kana 3.6s cubic-bezier(.35,.1,.45,1) forwards}
 .wave svg{display:block;height:100%;width:auto}
@@ -282,6 +283,7 @@ body[data-look="poster"] .board .where{position:absolute;left:0;right:0;top:102p
       <a href="https://www.instagram.com/seayousurfcafe/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@seayousurfcafe</a>
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Sea%20You%20Surf%20Cafe%20Arrifana" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="maps-label"></span></a>
     </div>
+    <p class="credit"><span id="credit-t"></span> <a href="https://www.instagram.com/sorianolab/" target="_blank" rel="noopener">@SorianoLab</a></p>
   </div>
 </footer>
 
@@ -530,7 +532,7 @@ document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-press
   fitTitle();u.dataset.m=menu;
   if(menu==="drinks"){if(was!=="drinks"){u.className="";void u.offsetWidth;u.className="in"}}
   else if(was==="drinks"){u.className="";void u.offsetWidth;u.className="out"}}
-  document.getElementById("maps-label").textContent=tr(UI.maps);
+  document.getElementById("maps-label").textContent=tr(UI.maps);document.getElementById("credit-t").textContent=tr(T("Web desenhada por","Website designed by","Web diseñada por","Website von"));
   document.getElementById("review-text").textContent=tr(UI.review);
   
   const secs=MENUS[menu].filter(s=>REVIEW||s.items.some(i=>i.s!=="old"));
